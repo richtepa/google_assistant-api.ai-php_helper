@@ -8,7 +8,7 @@ also see example.php
 
 see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 
-*use " _ " instead of " - " or spaces in intent-names on api.ai*
+use <code>_</code> instead of symbols (e.g. <code>-</code>) or spaces in intent-names on api.ai
 
 ### 2. Configure settings (optional)
 
@@ -20,8 +20,10 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 
 | PARAMETER       | if true | default |
 | --------------- | ------- | ------- |
-| log             | logs input, compiled data, output and individual logs in log.json next to the helper.php | false |
+| log             | logs input, compiled data, output and additional logs in log.json next to the helper.php | false |
 | intent-function | executes function with the intent-name from api.ai | false |
+
+You can use <code>log_out(TITLE, CONTENT);</code> (after <code>include()</code>) to log additional things to log.json if you declared <code>$helper_config["log"] = true;</code>.
 
 #### example:
 <pre><code>$helper_config["intent-function"] = true;</code></pre>
