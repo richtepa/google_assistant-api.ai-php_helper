@@ -26,6 +26,7 @@ use <code>_</code> instead of symbols (e.g. <code>-</code>) or spaces in intent-
 You can use <code>log_out(TITLE, CONTENT);</code> (after <code>include()</code>) to log additional things to log.json if you declared <code>$helper_config["log"] = true;</code>.
 
 #### example:
+
 <pre><code>$helper_config["intent-function"] = true;</code></pre>
 
 ### 3. Add helper.php after the import of necessary data (before usage of input)
@@ -55,7 +56,7 @@ You can use <code>log_out(TITLE, CONTENT);</code> (after <code>include()</code>)
 #### example:
 
 <pre><code>global $helper;
-$userId = $helper["userId"]</code></pre>
+$userId = $helper["userId"];</code></pre>
 
 ## Output
 
@@ -65,10 +66,10 @@ You can respond on prompts in different versions. For requirements check [Action
 
 | response type     | code                                                                           | 
 | ----------------- | ------------------------------------------------------------------------------ |
-| simple response   | <pre><code>simple_response(TEXT);</code></pre>                                 |
+| simple response   | <pre><code>simple_response(TEXT);</code></pre>                                 |
 | Basic Card        | <pre><code>basic_card(TITLE, DESCRIPTION, IMG-URL, IMG-ALT-TEXT);</code></pre> |
-| List selector     | *not included yet*                                                             |
-| Carousel selector | *not included yet*                                                             |
+| List selector     | <pre><code>list_selector(LIST-TITLE, [ITEM1-TITLE, ...], [ITEM1-DESCR., ...], [ITEM1-IMG-URL., ...], [ITEM1-IMG-TEXT., ...]);</code></pre> |
+| Carousel selector | <pre><code>carousel_selector(LIST-TITLE, [ITEM1-TITLE, ...], [ITEM1-DESCR., ...], [ITEM1-IMG-URL., ...], [ITEM1-IMG-TEXT., ...]);</code></pre> |
 | Suggestion Chips  | <pre><code>suggestion_chips([CHIP1, CHIP2, ...]);</code></pre>                 |
 
 #### example:
