@@ -80,9 +80,6 @@ function suggestion_chips($chips){
 function basic_card($title, $text, $img_url, $img_text, $link_title, $link_url){
 	global $helper, $helper_message_counter, $helper_output, $helper_log;
 	
-	$helper_log["raw"]["link_title"] = $link_title;
-	$helper_log["raw"]["link_url"] = $link_url;
-	
 	$helper_output["messages"][$helper_message_counter]["platform"] = "google";
 	$helper_output["messages"][$helper_message_counter]["type"] = "basic_card";
 	$helper_output["messages"][$helper_message_counter]["title"] = $title;
@@ -91,6 +88,64 @@ function basic_card($title, $text, $img_url, $img_text, $link_title, $link_url){
 	$helper_output["messages"][$helper_message_counter]["image"]["accessibilityText"] = $img_text;
 	//$helper_output["messages"][$helper_message_counter]["buttons"][0]["title"] = $link_title;
 	//$helper_output["messages"][$helper_message_counter]["buttons"][0]["openUrlAction"] = $link_url;
+	
+	$helper_message_counter ++;
+}
+
+function list_selector($title, $item_title, $item_desc, $item_img, $item_img_text){
+	global $helper, $helper_message_counter, $helper_output;
+	
+	$helper_output["messages"][$helper_message_counter]["platform"] = "google";
+	$helper_output["messages"][$helper_message_counter]["type"] = "list_card";
+	
+	$amount = count($item_title);
+	for($i = 0; $i < $amount; $i++){
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["synonyms"][0] = $item_title[$i];
+		
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["key"] = $item_title[$i];
+		
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["title"] = $item_title[$i];
+		
+		if($item_img[$i] != "" && $item_img[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["url"] = $item_img[$i];
+		}
+		if($item_img_text[$i] != "" && $item_img_text[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["accessibility_text"] = $item_img_text[$i];
+		}
+		
+		if($item_desc[$i] != "" && $item_desc[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["description"] = $item_desc[$i];
+		}
+	}
+	
+	$helper_message_counter ++;
+}
+
+function carousel_selector($title, $item_title, $item_desc, $item_img, $item_img_text){
+	global $helper, $helper_message_counter, $helper_output;
+	
+	$helper_output["messages"][$helper_message_counter]["platform"] = "google";
+	$helper_output["messages"][$helper_message_counter]["type"] = "carousel_card";
+	
+	$amount = count($item_title);
+	for($i = 0; $i < $amount; $i++){
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["synonyms"][0] = $item_title[$i];
+		
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["key"] = $item_title[$i];
+		
+		$helper_output["messages"][$helper_message_counter]["items"][$i]["title"] = $item_title[$i];
+		
+		if($item_img[$i] != "" && $item_img[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["url"] = $item_img[$i];
+		}
+		if($item_img_text[$i] != "" && $item_img_text[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["accessibility_text"] = $item_img_text[$i];
+		}
+		
+		if($item_desc[$i] != "" && $item_desc[$i] != null){
+			$helper_output["messages"][$helper_message_counter]["items"][$i]["description"] = $item_desc[$i];
+		}
+	}
 	
 	$helper_message_counter ++;
 }
