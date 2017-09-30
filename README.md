@@ -68,13 +68,14 @@ You can respond on prompts in different versions. For requirements check [Action
 | ----------------- | ------------------------------------------------------------------------------ |
 | simple response   | <pre><code>simple_response(TEXT);</code></pre>                                 |
 | Basic Card        | <pre><code>basic_card(TITLE, DESCRIPTION, IMG-URL, IMG-ALT-TEXT);</code></pre> |
-| List selector     | <pre><code>list_selector(LIST-TITLE, [ITEM1-TITLE, ...], [ITEM1-DESCR., ...], [ITEM1-IMG-URL., ...], [ITEM1-IMG-TEXT., ...]);</code></pre> |
-| Carousel selector | <pre><code>carousel_selector(LIST-TITLE, [ITEM1-TITLE, ...], [ITEM1-DESCR., ...], [ITEM1-IMG-URL., ...], [ITEM1-IMG-TEXT., ...]);</code></pre> |
+| List selector     | <pre><code>list_selector(LIST-TITLE);</code></pre> |
+| Carousel selector | <pre><code>carousel_selector();</code></pre> |
 | Suggestion Chips  | <pre><code>suggestion_chips([CHIP1, CHIP2, ...]);</code></pre>                 |
 
-#### example:
+before calling <code>carousel_selector();</code> or <code>list_selector();</code> add each item:
 
-<pre><code>simple_response("Here is your result:");
-basic_card("Cats", "Cats are beatuiful", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kittyply_edit1.jpg/220px-Kittyply_edit1.jpg", "cat from Wikipedia");
-suggestion_chips(["grey cats", "white cats, "brown cats"]);
-</code></pre>
+<pre><code>addItem(TITLE, DESCRIPTION, IMG-URL, IMG-ALT-TEXT);</code></pre>
+
+#### examples:
+
+see example.php
