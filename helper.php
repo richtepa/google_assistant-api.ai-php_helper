@@ -1,5 +1,8 @@
 <?php
 $helper_message_counter = 0;
+$helper_item_counter = 0;
+$items;
+
 $helper = helper_input();
 echo json_encode($helper_output);
 
@@ -92,60 +95,49 @@ function basic_card($title, $text, $img_url, $img_text, $link_title, $link_url){
 	$helper_message_counter ++;
 }
 
-function list_selector($title, $item_title, $item_desc, $item_img, $item_img_text){
-	global $helper, $helper_message_counter, $helper_output;
+function list_selector($title){
+	global $helper, $helper_message_counter, $helper_output, $items;
 	
 	$helper_output["messages"][$helper_message_counter]["platform"] = "google";
 	$helper_output["messages"][$helper_message_counter]["type"] = "list_card";
+	$helper_output["messages"][$helper_message_counter]["title"] = $title;
 	
-	$amount = count($item_title);
+	$amount = count($items);
 	for($i = 0; $i < $amount; $i++){
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["synonyms"][0] = $item_title[$i];
-		
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["key"] = $item_title[$i];
-		
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["title"] = $item_title[$i];
-		
-		if($item_img[$i] != "" && $item_img[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["url"] = $item_img[$i];
-		}
-		if($item_img_text[$i] != "" && $item_img_text[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["accessibility_text"] = $item_img_text[$i];
-		}
-		
-		if($item_desc[$i] != "" && $item_desc[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["description"] = $item_desc[$i];
-		}
+		$helper_output["messages"][$helper_message_counter]["items"][$i] = $items[$i];
 	}
 	
 	$helper_message_counter ++;
 }
 
-function carousel_selector($title, $item_title, $item_desc, $item_img, $item_img_text){
-	global $helper, $helper_message_counter, $helper_output;
+function carousel_selector($title){
+	global $helper, $helper_message_counter, $helper_output, $items;
 	
 	$helper_output["messages"][$helper_message_counter]["platform"] = "google";
 	$helper_output["messages"][$helper_message_counter]["type"] = "carousel_card";
 	
-	$amount = count($item_title);
+	$amount = count($items);
 	for($i = 0; $i < $amount; $i++){
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["synonyms"][0] = $item_title[$i];
-		
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["optionInfo"]["key"] = $item_title[$i];
-		
-		$helper_output["messages"][$helper_message_counter]["items"][$i]["title"] = $item_title[$i];
-		
-		if($item_img[$i] != "" && $item_img[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["url"] = $item_img[$i];
-		}
-		if($item_img_text[$i] != "" && $item_img_text[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["image"]["accessibility_text"] = $item_img_text[$i];
-		}
-		
-		if($item_desc[$i] != "" && $item_desc[$i] != null){
-			$helper_output["messages"][$helper_message_counter]["items"][$i]["description"] = $item_desc[$i];
-		}
+		$helper_output["messages"][$helper_message_counter]["items"][$i] = $items[$i];
 	}
 	
 	$helper_message_counter ++;
+}
+
+function addItem($title, $description, $img_url, $img_text){
+	global $helper_item_counter, $items;
+	$items[$helper_item_counter]["optionInfo"]["synonyms"][0] = $title;
+	$items[$helper_item_counter]["optionInfo"]["key"] = $title;
+	$items[$helper_item_counter]["title"] = $title;
+	
+	if($description != "" && $description != null){
+		$items[$helper_item_counter]["description"] = $description;
+	}
+	if($img_url != "" && $img_url != null){
+		$items[$helper_item_counter]["image"]["url"] = $img_url;
+	}
+	if($img_text != "" && $img_text != null){
+		$items[$helper_item_counter]["image"]["accessibility_text"] = $img_text;
+	}
+	$helper_item_counter++;
 }
