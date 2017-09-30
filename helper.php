@@ -77,7 +77,7 @@ function suggestion_chips($chips){
 	$helper_message_counter ++;
 }
 
-function basic_card($title, $text, $link_title, $link_url){
+function basic_card($title, $text, $img_url, $img_text, $link_title, $link_url){
 	global $helper, $helper_message_counter, $helper_output, $helper_log;
 	
 	$helper_log["raw"]["link_title"] = $link_title;
@@ -87,6 +87,8 @@ function basic_card($title, $text, $link_title, $link_url){
 	$helper_output["messages"][$helper_message_counter]["type"] = "basic_card";
 	$helper_output["messages"][$helper_message_counter]["title"] = $title;
 	$helper_output["messages"][$helper_message_counter]["formattedText"] = $text;
+	$helper_output["messages"][$helper_message_counter]["image"]["url"] = $img_url;
+	$helper_output["messages"][$helper_message_counter]["image"]["accessibilityText"] = $img_text;
 	//$helper_output["messages"][$helper_message_counter]["buttons"][0]["title"] = $link_title;
 	//$helper_output["messages"][$helper_message_counter]["buttons"][0]["openUrlAction"] = $link_url;
 	
