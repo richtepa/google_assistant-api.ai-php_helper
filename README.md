@@ -1,5 +1,6 @@
 # Google Assistant api.ai PHP-Helper
 
+also see example.php
 
 ## Setup
 
@@ -7,16 +8,18 @@
 
 see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 
+*use " _ " instead of " - " or spaces in intent-names on api.ai*
+
 ### 2. Configure settings (optional)
 
-**options:**
+#### options:
 
 | var                   | if true | default |
 | --------------------- | ------- | ------- |
 | $helper_config["log"] | logs input, compiled data, output and individual logs in log.json next to the helper.php | false |
 | $helper_config["intent-function"] | executes function with the intent-name from api.ai | false |
 
-**example:**
+#### example:
 <pre><code>$helper_config["intent-function"] = true;</code></pre>
 
 ### 3. Add helper.php after the import of necessary data (before usage of input)
@@ -24,7 +27,7 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 
 ## Input
 
-**options**
+#### options:
 
 | PARAMETER      | type    | description                     | example                        |
 | -------------- | ------- | ------------------------------- | ------------------------------ |
@@ -39,15 +42,16 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 | parameters     | object  | from api.ai resolved parameters | {type: "cookies", person: "I"} |
 | intent         | string  | intent                          | "like"                         |
 
-**example**
+#### example:
 
-<pre><code>$parameter = $helper[PARAMETER]</code></pre>
+<pre><code>global $helper;
+$parameter = $helper[PARAMETER]</code></pre>
 
 ## Output
 
 You can respond on prompts in different versions. For requirements check [Actions on Google Guides - Responses](https://developers.google.com/actions/assistant/responses)
 
-**methods**
+#### methods:
 
 | response type     | code                                                                           | 
 | ----------------- | ------------------------------------------------------------------------------ |
@@ -57,7 +61,7 @@ You can respond on prompts in different versions. For requirements check [Action
 | Carousel selector | *not included yet*                                                             |
 | Suggestion Chips  | <pre><code>suggestion_chips([CHIP1, CHIP2, ...]);</code></pre>                 |
 
-**example**
+#### example:
 
 <pre><code>simple_response("Here is your result:");
 basic_card("Cats", "Cats are beatuiful", "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Kittyply_edit1.jpg/220px-Kittyply_edit1.jpg", "cat from Wikipedia");
