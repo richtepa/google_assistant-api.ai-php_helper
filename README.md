@@ -12,12 +12,16 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 
 ### 2. Configure settings (optional)
 
+#### code:
+
+<pre><code>$helper_config["PARAMETER"]</code></pre>
+
 #### options:
 
-| var                   | if true | default |
-| --------------------- | ------- | ------- |
-| $helper_config["log"] | logs input, compiled data, output and individual logs in log.json next to the helper.php | false |
-| $helper_config["intent-function"] | executes function with the intent-name from api.ai | false |
+| PARAMETER       | if true | default |
+| --------------- | ------- | ------- |
+| log             | logs input, compiled data, output and individual logs in log.json next to the helper.php | false |
+| intent-function | executes function with the intent-name from api.ai | false |
 
 #### example:
 <pre><code>$helper_config["intent-function"] = true;</code></pre>
@@ -26,6 +30,10 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 <pre><code>include(PATH/TO/FILE.php);</code></pre>
 
 ## Input
+
+#### code:
+
+<pre><code>$helper["PARAMETER"]</code></pre>
 
 #### options:
 
@@ -45,7 +53,7 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 #### example:
 
 <pre><code>global $helper;
-$parameter = $helper[PARAMETER]</code></pre>
+$userId = $helper["userId"]</code></pre>
 
 ## Output
 
