@@ -19,7 +19,7 @@ see: [api.ai docs - Fulfillment](https://api.ai/docs/fulfillment)
 **example:**
 <pre><code>$helper_config["intent-function"] = true;</code></pre>
 
-### 3. Add helper.php after the import of necessary data;
+### 3. Add helper.php after the import of necessary data (before usage of input)
 <pre><code>include(PATH/TO/FILE.php);</code></pre>
 
 ## Input
